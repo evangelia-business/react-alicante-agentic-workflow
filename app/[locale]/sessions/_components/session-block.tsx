@@ -26,7 +26,10 @@ export function SessionBlock({ session, top, height }: SessionBlockProps) {
           </Text>
           <Flex align="center" gap="1" minWidth="0">
             <Box flexShrink="0">
-              <Badge variant="secondary">
+              <Badge
+                variant="secondary"
+                aria-label={`Level: ${formatSessionLevel(session.level)}`}
+              >
                 {formatSessionLevel(session.level)}
               </Badge>
             </Box>
