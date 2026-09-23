@@ -1,7 +1,9 @@
+import { Badge } from "@/components/atoms/badge";
 import { SurfaceCard } from "@/components/atoms/surface-card";
 import { Link } from "@/i18n/navigation";
 import type { Session } from "@/types/session";
-import { Box, Text } from "@chakra-ui/react";
+import { formatSessionLevel } from "@/utils/format-session-level";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 interface SessionBlockProps {
   session: Session;
@@ -22,9 +24,16 @@ export function SessionBlock({ session, top, height }: SessionBlockProps) {
           <Text fontWeight="medium" color="var(--text-primary)" truncate>
             {session.title}
           </Text>
-          <Text color="var(--text-muted)" truncate>
-            {session.startTime} · {session.speaker}
-          </Text>
+          <Flex align="center" gap="1" minWidth="0">
+            <Box flexShrink="0">
+              <Badge variant="secondary">
+                {formatSessionLevel(session.level)}
+              </Badge>
+            </Box>
+            <Text color="var(--text-muted)" truncate>
+              {session.startTime} · {session.speaker}
+            </Text>
+          </Flex>
         </SurfaceCard>
       </Box>
     </Link>
