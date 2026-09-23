@@ -1,5 +1,5 @@
 import { SpeakerCard } from "@/app/[locale]/speakers/_components/speaker-card";
-import { PageHeading } from "@/components/atoms/page-heading";
+import { SpeakersPageHeading } from "@/app/[locale]/speakers/_components/speakers-page-heading";
 import { fetchSessions } from "@/services/sessions";
 import { groupSessionsBySpeaker } from "@/utils/speakers";
 import { Flex, Grid } from "@chakra-ui/react";
@@ -10,9 +10,7 @@ export default async function SpeakersPage() {
 
   return (
     <Flex direction="column" gap="8" flex="1" width="full">
-      <PageHeading title="Speakers">
-        Everyone speaking today, and what they&apos;re giving.
-      </PageHeading>
+      <SpeakersPageHeading />
 
       <Grid gap="4" templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }}>
         {speakers.map((speaker) => (

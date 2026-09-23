@@ -8,6 +8,10 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
+  "SpeakersPage": {
+    "title": "Speakers",
+    "description": "Everyone speaking today, and what they're giving."
+  },
   "Hero": {
     "heading": "React Alicante Conference Companion",
     "line1": "Your schedule, your sessions —",
