@@ -62,4 +62,25 @@ describe("SpeakerCard", () => {
       "/en/sessions/opening-keynote",
     );
   });
+
+  it("names each link with the session and the speaker, for screen readers", () => {
+    render(
+      <SpeakerCard
+        name="Marta Fernandez"
+        sessions={[
+          session({
+            id: "opening-keynote",
+            title: "Opening Keynote",
+            startTime: "09:00",
+          }),
+        ]}
+      />,
+    );
+
+    expect(
+      screen.getByRole("link", {
+        name: "Opening Keynote, 09:00, by Marta Fernandez",
+      }),
+    ).toBeInTheDocument();
+  });
 });
