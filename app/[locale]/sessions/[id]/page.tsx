@@ -1,11 +1,19 @@
 import { Badge } from "@/components/atoms/badge";
 import { Link } from "@/i18n/navigation";
 import { fetchSessionById, fetchSessions } from "@/services/sessions";
+import { formatSessionLevel } from "@/utils/format-session-level";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const sessions = await fetchSessions();
+
+  // Cache Components rejects an empty array here — a fresh environment with
+  // no rows yet (or no table at all) would otherwise fail the build. The
+  // placeholder id never matches a real session, so the page below falls
+  // through to notFound() for it, same as any other unknown id.
+  if (sessions.length === 0) return [{ id: "__placeholder__" }];
+
   return sessions.map((session) => ({ id: session.id }));
 }
 
@@ -36,7 +44,13 @@ export default async function SessionDetailPage({
 
       <Flex direction="column" gap="3">
         <Flex align="center" gap="3">
-          <Badge>{session.track}</Badge>
+          <Badge aria-label={`Track: ${session.track}`}>{session.track}</Badge>
+          <Badge
+            variant="secondary"
+            aria-label={`Level: ${formatSessionLevel(session.level)}`}
+          >
+            {formatSessionLevel(session.level)}
+          </Badge>
           <Text fontSize="sm" color="var(--text-muted)">
             {session.startTime} · {session.durationMinutes} min · {session.room}
           </Text>

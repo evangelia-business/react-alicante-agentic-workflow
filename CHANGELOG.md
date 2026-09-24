@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.4.0] — 2026-09-23
+
+### Features
+
+- Add a Speakers page (#4)
+- Show each session's level (#7)
+
+### Bug Fixes
+
+- Sessions page survives an empty sessions table at build time
+
+### Maintenance
+
+- Bump version to 0.4.0
+- Trigger the first CI run after enabling Actions
+
+## Test Suite
+
+| Suite          | Status     |
+| -------------- | ---------- |
+| ESLint         | ⏳ pending |
+| Type-check     | ⏳ pending |
+| Unit tests     | ⏳ pending |
+| Build (Vercel) | ⏳ pending |
+
+CI: pending — will run once the release branch is pushed
+
 ## [0.3.0] — 2026-09-22
 
 ### Refactoring

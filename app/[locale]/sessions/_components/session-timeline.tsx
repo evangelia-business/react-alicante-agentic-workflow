@@ -8,7 +8,10 @@ import {
 } from "@/utils/session-timeline";
 import { Box, Flex, Text } from "@chakra-ui/react";
 
-const PX_PER_MINUTE = 1.6;
+// 1.6 was enough for a two-line block (title + time/speaker). Adding the
+// level badge as a third line pushes the shortest (30-min) block's content
+// past its own height under `overflow: hidden` — 1.8 gives it enough room.
+const PX_PER_MINUTE = 1.8;
 const TIME_COLUMN_WIDTH = 56;
 const ROOM_COLUMN_MIN_WIDTH = 180;
 
